@@ -31,6 +31,7 @@ class TopicCreator extends Component{
             progress:''
         }
         console.log('hello')
+        console.log(submittedContent)
         axios.post("/hackathons/new", submittedContent).then( res => {
             console.log(res)
         } )

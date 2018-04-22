@@ -32,6 +32,10 @@ router.get('/hackathons/:topicId', (req, res) => {
   });
 });
 
+router.post('hackathons/register', (req,res)=>{
+  // expecting to receive event ID, project title, and project descript
+})
+
 router.get('/hackathons/:topicId/find-teammates', (req, res) => {
   con.query('SELECT * FROM users' + 
     ' INNER JOIN users ON teamless.userId = users.userId' + 
