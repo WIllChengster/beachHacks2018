@@ -17,28 +17,26 @@ passport.use(new GitHubStrategy({
 		callbackURL: 'http://localhost:8080/auth/github/callback'
 	}, 
 	function (accessToken, refreshToken, profile, done) {
-		console.log(profile);
-		con.query('SELECT * FROM users WHERE userId = ?', [profile.id], (err, results) => {
+		con.query('SELECT * FROM users WHERE userId = ?', [profile._json.id], (err, results) => {
 			// If user does not exist in database, create a new user
-			if(results.length === 0) {
+			// console.log(results)
+			if(results.length===0) {
 				let user = {
-					userId: profile.id,
+					userId: profile._json.id,
 					fullName: profile.displayName,
 					username: profile.username,
 					avatarURL: profile.photos[0].value
 				}
 
-				console.log('User doesn\'t exist');
-
 				con.query('INSERT INTO users SET ?', user, (err, results, fields) => {
 					if(err) {
 						throw err;
 					}
-					console.log('Added ' + profile.id + ' to the database');
-					done(null, user);
+
+					return done(null, user);
 				});
 			} else {
-				console.log('user exists: ', results);
+				// console.log('user exists: ', results);
 				done(null, results);
 			}
 		});
@@ -46,11 +44,14 @@ passport.use(new GitHubStrategy({
 ));
 
 passport.serializeUser((user, done) => {
-	done(null, user);
+	console.log("REACHED SERALIZE")
+	console.log(user[0])
+	done(null, user[0].userId);
 });
 
 passport.deserializeUser((id, done) => {
-	con.query('SELECT * FROM users WHERE userId = ?', [id[0].userId], (err, results) => {
+	console.log('DESERIALIZING')
+	con.query('SELECT * FROM users WHERE userId = ?', [id], (err, results) => {
 		if(err) {
 			throw err;
 		}
@@ -58,30 +59,35 @@ passport.deserializeUser((id, done) => {
 	})
 });
 
-router.get('/error', (err, res) => {
+router.get('/auth/error', (err, res) => {
 	res.send(err);
 });
 
-router.get('/check', (req, res) => {
+router.get('/auth/check', (req, res) => {
+	
 	let authenticated = null;
 	if(req.isAuthenticated()) {
 		authenticated = true;
 	} else {
 		authenticated = false;
 	}
+	console.log(authenticated)
 
 	res.send({authenticated});
 });
 
-router.get('/login', passport.authenticate('github'));
+router.get('/auth/login', passport.authenticate('github'));
 
 router.get('/auth/github/callback', passport.authenticate('github'), (err, res) => {
   res.redirect('/');
 });
 
-router.get('/logout', (req, res) => {
+router.get('/auth/logoff', (req, res) => {
+	console.log('logging off')
 	req.logout();
-	res.redirect('/');
+	req.session.destroy( () => {
+        res.redirect('/');  
+    } )
 });
 
 module.exports = router;

@@ -39,7 +39,7 @@ app.use(profileRoute);
 app.use(authenticateRoute);
 
 app.get('/', (req, res) => {
-	res.send('Landing Page');
+	res.redirect('/home');
 });
 
 app.use(express.static(resolve(__dirname, '..', 'dist')));

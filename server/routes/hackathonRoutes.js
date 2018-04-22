@@ -18,7 +18,7 @@ router.get('/hackathons', (req, res) => {
   });
 });
 
-router.get('/hackathons/new', isAuthenticated, (req, res) => {
+router.post('/hackathons/new', isAuthenticated, (req, res) => {
     res.send('Create a new Hackathon here');
 });
 
@@ -43,6 +43,8 @@ router.get('/hackathons/:topicId/find-teammates', (req, res) => {
 });
 
 router.post('/hackathons', (req, res) => {
+
+  console.log(req.body);
   // let hackathon = {
   //   title: req.body.title,
   //   description: req.body.description,

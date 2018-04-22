@@ -1,3 +1,3 @@
 export default {
-    AUTH_CHECK: 'auth_check'
+    AUTH_CHECK: "auth_check"
 }
