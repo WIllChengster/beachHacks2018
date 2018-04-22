@@ -1,0 +1,8 @@
+{
+	"host": "hermithack.cmscvsquuuyo.us-west-1.rds.amazonaws.com",
+	"user": "root",
+	"password": "password",
+	"database": "hermithack",
+	"GITHUB_CLIENT_ID": "300273e82efad2dca68d" ,
+	"GITHUB_CLIENT_SECRET": "1cbbf13fed90cbad00167e190e4f35ee652b8e2a"
+}
