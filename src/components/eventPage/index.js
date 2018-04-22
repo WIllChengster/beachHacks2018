@@ -10,7 +10,6 @@ class EventPage extends Component{
     }
 
     render(){
-
         const dummyImg={
             height:'300px',
             width: '100vw',
@@ -56,10 +55,10 @@ class EventPage extends Component{
                     <div className="col-4">
                         
                         <div>
-                            <Link to="/event/signUp" >
-                            <p className="text-center" >
-                                <button className="btn btn-info w-100 ">Register</button>
-                            </p>
+                            <Link to={`/event/${this.props.match.params.eventId}/register`} >
+                                <p className="text-center" >
+                                    <button className="btn btn-info w-100 ">Register</button>
+                                </p>
                             </Link>
                             <h3 className="text-center" >Attendees</h3>
                             {attendeeSquare}
