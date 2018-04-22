@@ -21,6 +21,7 @@ router.get('/hackathons', (req, res) => {
 router.post('/hackathons/new', (req, res) => {
   let hackathon = {
     description: req.body.description,
+    title:req.body.title,
     progress: 'In-Progress',
     coverArtUrl: 'https://google.com',
   }

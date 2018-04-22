@@ -9,11 +9,12 @@ export default (props) => {
         display: "inline-block",
         margin: '5px'
     }
-
+    console.log(props);
     return(
-        <Link to={`/event/${props.eventId}`} >
+
+        <Link to={`/event/${props.data.topicId}`} >
             <div style={hackathon} className="align-self-center justify-content-center " >
-                <h6 className=" text-center" > Hackathon Title! </h6>
+                <h6 className=" text-center" > {props.data.title}  </h6>
             </div>
         </Link>
     )
