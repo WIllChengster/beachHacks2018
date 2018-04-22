@@ -22,10 +22,11 @@ class Register extends Component{
     }
 
     render(){
+        console.log(this.state)
         return(
             <div className="row">
                 <h1 className="text-center w-100">Register your Project</h1>
-                <div className="col jumbotron ">
+                <div className="col-5 jumbotron ">
                     <form>
                         <div className="form-group">
                             <label htmlFor="projectName">Title</label>
@@ -37,6 +38,9 @@ class Register extends Component{
                         </div> 
                         <button className="btn btn-primary" >Create your project!</button>
                     </form>
+                </div>
+                <div className="col align-self-center card ml-2">
+                    <h5 className="text-center card-bopdy p-5 " >side content can go here</h5>
                 </div>
             </div>
         )
