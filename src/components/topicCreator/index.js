@@ -32,7 +32,7 @@ class TopicCreator extends Component{
         console.log(submittedContent)
         console.log('hello')
         console.log(submittedContent)
-        axios.post("/hackathons/register", submittedContent).then( res => {
+        axios.post(`/hackathons/new`, submittedContent).then( res => {
             console.log(res)
         } )
         event.preventDefault()

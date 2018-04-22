@@ -16,15 +16,16 @@ class EventPage extends Component{
         }
     }
 
-    componentWillMount(){
-        this.getProfileData()
-    }
 
     getProfileData(){
         axios.get('/auth/data').then(res=>{
             console.log(res)
+            const user = res
             this.setState({
                 userData: res
+            })
+            axios.post(`hackathons/${this.props.match.params}/apply`, user).then(res=>{
+                console.log(res)
             })
         })
     }
@@ -32,7 +33,10 @@ class EventPage extends Component{
     componentWillMount(){
         this.getHackathonInfo()
     }
+    componentDidMount(){
+        this.getProfileData()
 
+    }
     getHackathonInfo(){
         axios.get(`/hackathons/${this.props.match.params.eventId}`).then(res => {
             console.log(res)
@@ -40,6 +44,11 @@ class EventPage extends Component{
             hackData: res.data[0]
         })
     })
+    }
+    authRender(element){
+        if (this.props.auth){
+
+        }
     }
 
     render(){
@@ -101,7 +110,7 @@ class EventPage extends Component{
                             </Link>
                             <h3 className="text-center" >Attendees</h3>
                             {attendeeSquare}
-
+                            <button className="btn btn-primary">Join now!</button>
                         </div>
                     </div>
                     <div className="col">

@@ -90,7 +90,9 @@ router.get('/auth/logoff', (req, res) => {
     } )
 });
 
-router.get('/auth/data',(req,res)=>{
+router.get('/auth/data', (req,res)=>{
+	console.log('****************')
+	console.log(req.user)
 	res.send(req.user)
 })
 
