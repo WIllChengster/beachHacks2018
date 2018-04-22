@@ -1,5 +1,5 @@
-const router         = require('express').Router(),
-			config         = require('../config.json'),
+const router = require('express').Router(),
+			config = require('../config.json'),
 			mysql  = require('mysql');
 
 const con = mysql.createConnection({
@@ -9,7 +9,7 @@ const con = mysql.createConnection({
   database: config.database
 });
 
-router.get('/profile/:username', (req,res)=> {
+router.get('/profile/:username', (req,res) => {
   con.query('SELECT * FROM users WHERE username = ?' [req.params.username], (err, results, fields) => {
     if(err) {
       res.send('404 page goes here');

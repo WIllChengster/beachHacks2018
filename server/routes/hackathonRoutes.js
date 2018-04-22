@@ -18,13 +18,8 @@ router.get('/hackathons', (req, res) => {
   });
 });
 
-router.get('/hackathons/new', (req, res) => {
-  if(!req.isAuthenticated()) {
-    console.log('User is not authenticated, redirecting to login page');
-    res.redirect('/auth/github');
-  } else {
+router.get('/hackathons/new', isAuthenticated, (req, res) => {
     res.send('Create a new Hackathon here');
-  }
 });
 
 router.get('/hackathons/:topicId', (req, res) => {
@@ -73,8 +68,15 @@ router.post('/hackathons', (req, res) => {
     if(err) {
       throw err;
     }
-    console.log('Added admins into the database')
-  })
+    console.log('Added admins into the database');
+  });
 });
+
+function isAuthenticated(req, res, next) {
+  if(req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/login');
+}
 
 module.exports = router;

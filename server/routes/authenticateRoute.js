@@ -46,8 +46,6 @@ passport.use(new GitHubStrategy({
 ));
 
 passport.serializeUser((user, done) => {
-	console.log('serializing')
-	console.log(user[0].userId);
 	done(null, user);
 });
 
@@ -75,10 +73,15 @@ router.get('/check', (req, res) => {
 	res.send({authenticated});
 });
 
-router.get('/auth/github', passport.authenticate('github'));
+router.get('/login', passport.authenticate('github'));
 
 router.get('/auth/github/callback', passport.authenticate('github'), (err, res) => {
   res.redirect('/');
+});
+
+router.get('/logout', (req, res) => {
+	req.logout();
+	res.redirect('/');
 });
 
 module.exports = router;
