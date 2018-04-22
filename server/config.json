@@ -1,8 +1,0 @@
-{
-	"host": "localhost",
-	"user": "root",
-	"password": "ruinedscape",
-	"database": "RemoteHackathon",
-	"GITHUB_CLIENT_ID": "300273e82efad2dca68d" ,
-	"GITHUB_CLIENT_SECRET": "1cbbf13fed90cbad00167e190e4f35ee652b8e2a"
-}
