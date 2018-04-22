@@ -5,6 +5,11 @@ import axios from 'axios'
 class Home extends Component {
     constructor(props){
         super(props)
+        this.state={
+            hackathons: {
+
+            }
+        }
     }
 
     getHackathons(){
@@ -13,12 +18,14 @@ class Home extends Component {
 
     render(){
 
-        const hackathonArray = [null, null, null, null, null,]
-        const hackathonBox = hackathonArray.map((item,index)=>{
-            return(
-                <Hackathon key={index} />
-            )
-        }) 
+
+
+        const hackathonArr = {1:1, 2:2, 3:3, 4:4, 5:5}
+        // const hackathonBox = Object.keys(hackathonArr).map((item,index) => {
+        //     return(
+        //         <Hackathon key={index} hackathonData={item} />
+        //     )
+        // })
 
         return(
             
@@ -30,7 +37,7 @@ class Home extends Component {
                 </div>
                     <h4 className="my-5" >Explore Hackathons</h4>
                     <div className="d-flex " >
-                        {hackathonBox}
+                        {/* {hackathonBox} */}
                     </div>
             </div>
         )
