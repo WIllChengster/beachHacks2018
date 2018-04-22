@@ -10,7 +10,6 @@ class EventPage extends Component{
     }
 
     render(){
-        console.log(this.props)
         const dummyImg={
             height:'300px',
             width: '100vw',
