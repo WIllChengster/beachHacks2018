@@ -17,7 +17,6 @@ passport.use(new GitHubStrategy({
 		callbackURL: 'http://localhost:8080/auth/github/callback'
 	}, 
 	function (accessToken, refreshToken, profile, done) {
-		// console.log(profile._json)
 		con.query('SELECT * FROM users WHERE userId = ?', [profile._json.id], (err, results) => {
 			// If user does not exist in database, create a new user
 			// console.log(results)
@@ -29,13 +28,11 @@ passport.use(new GitHubStrategy({
 					avatarURL: profile.photos[0].value
 				}
 
-				// console.log('User doesn\'t exist');
-				// console.log(user)
 				con.query('INSERT INTO users SET ?', user, (err, results, fields) => {
 					if(err) {
 						throw err;
 					}
-					// console.log('Added ' + profile.json._id + ' to the database');
+
 					return done(null, user);
 				});
 			} else {

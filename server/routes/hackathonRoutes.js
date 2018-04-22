@@ -1,6 +1,6 @@
 const router = require('express').Router(),
       mysql  = require('mysql'),
-      config = require('../config.json');
+      config = require('../config.json')
 
 const con = mysql.createConnection({
   host: config.host,
@@ -18,9 +18,19 @@ router.get('/hackathons', (req, res) => {
   });
 });
 
-router.post('/hackathons/new',  (req, res) => {
-    console.log(req.body)
-    res.send('Create a new Hackathon here');
+router.post('/hackathons/new', (req, res) => {
+  let hackathon = {
+    description: req.body.description,
+    progress: 'In-Progress',
+    coverArtUrl: 'https://google.com',
+  }
+
+  con.query('INSERT INTO topics SET ?', hackathon, (err, res, fields) => {
+    if(err) {
+      throw err;
+    }
+    console.log('Created a new Hackathon!');
+  });
 });
 
 router.get('/hackathons/:topicId', (req, res) => {
@@ -48,36 +58,6 @@ router.get('/hackathons/:topicId/find-teammates', (req, res) => {
   });
 });
 
-// router.post('/hackathons', (req, res) => {
-  // let hackathon = {
-  //   title: req.body.title,
-  //   description: req.body.description,
-  //   dateStart: req.body.dateStart,
-  //   dateEnd: req.body.dateEnd,
-  //   progress: req.body.progress,
-  //   coverArtUrl = req.body.coverArtUrl
-  // };
-
-//   con.query('INSERT INTO topics SET ?', hackathon, (err, results, fields) => {
-//     if(err) {
-//       throw err;
-//     }
-//     console.log('Created new Hackathon post.');
-//   });
-
-//   // let admins = {
-//   //   userId: ,
-//   //   topicId: 
-//   // };
-
-//   con.query('INSERT INTO admins SET ?', admins, (err, results, fields) => {
-//     if(err) {
-//       throw err;
-//     }
-//     console.log('Added admins into the database');
-//   });
-// });
-// 
 function isAuthenticated(req, res, next) {
   if(req.isAuthenticated()) {
     return next();

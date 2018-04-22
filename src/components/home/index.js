@@ -31,7 +31,7 @@ class Home extends Component {
             console.log(item)
 
             return(
-                <Hackathon key={index} eventId={item} />
+                <Hackathon key={index} data={item} />
             )
         })
 
