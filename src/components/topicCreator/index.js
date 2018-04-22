@@ -1,4 +1,6 @@
 import React,{Component} from 'react';
+import axios from 'axios'
+import {connect} from 'react-redux'
 
 class TopicCreator extends Component{
     constructor(props){
@@ -21,6 +23,16 @@ class TopicCreator extends Component{
         })
     }
     onSubmit(event){
+        const submittedContent = {
+            title:this.state.titleInput,
+            description: this.state.descInput,
+            startDate:'',
+            endDate:'',
+            progress:''
+        }
+        axios.post("/hackathons/new", submittedContent).then( res => {
+            console.log(res)
+        } )
         event.preventDefault()
     }
     render(){
@@ -38,7 +50,7 @@ class TopicCreator extends Component{
                             </div>
                             <div className="form-group">
                                 <label htmlFor="description">Description</label>
-                                <input onChange={this.onDescChange.bind(this)} value={this.state.descInput} id="description" className="form-control" type="text" placeholder="Enter description here"/>
+                                <textarea onChange={this.onDescChange.bind(this)} value={this.state.descInput} id="description" className="form-control" type="text" placeholder="Enter description here"></textarea>
                             </div>
                             <button className="btn btn-primary float-right" >Submit</button>
                         </form>
@@ -48,4 +60,9 @@ class TopicCreator extends Component{
         )
     }
 }
-export default TopicCreator;
+
+function mapStateToProps(state){
+    auth: state.user.auth
+}
+
+export default connect(mapStateToProps,{})(TopicCreator)
