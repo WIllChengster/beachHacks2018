@@ -17,10 +17,10 @@ passport.use(new GitHubStrategy({
 		callbackURL: 'http://localhost:8080/auth/github/callback'
 	}, 
 	function (accessToken, refreshToken, profile, done) {
+		console.log(profile);
 		con.query('SELECT * FROM users WHERE userId = ?', [profile.id], (err, results) => {
 			// If user does not exist in database, create a new user
 			if(results.length === 0) {
-				// console.log(profile);
 				let user = {
 					userId: profile.id,
 					fullName: profile.displayName,
@@ -35,7 +35,7 @@ passport.use(new GitHubStrategy({
 						throw err;
 					}
 					console.log('Added ' + profile.id + ' to the database');
-					return done(null, user);
+					done(null, user);
 				});
 			} else {
 				console.log('user exists: ', results);
