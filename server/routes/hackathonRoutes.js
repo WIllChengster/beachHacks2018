@@ -48,25 +48,32 @@ router.get('/hackathons/:topicId/find-teammates', (req, res) => {
 });
 
 router.post('/hackathons', (req, res) => {
-  // let title = req.body.;
-  // let description = req.body.;
-  // let dateStart = req.body.;
-  // let dateEnd = req.body.;
-  // let progress = req.body.;
-
-  // newHackathon = {
-  //   title: title,
-  //   description: description,
-  //   dateStart: dateStart,
-  //   dateEnd: dateEnd,
-  //   progress: progress
+  // let hackathon = {
+  //   title: req.body.title,
+  //   description: req.body.description,
+  //   dateStart: req.body.dateStart,
+  //   dateEnd: req.body.dateEnd,
+  //   progress: req.body.progress,
+  //   coverArtUrl = req.body.coverArtUrl
   // };
 
-  con.query('INSERT INTO topics SET ?', newHackathon, (err, results, fields) => {
+  con.query('INSERT INTO topics SET ?', hackathon, (err, results, fields) => {
     if(err) {
       throw err;
     }
     console.log('Created new Hackathon post.');
+  });
+
+  // let admins = {
+  //   userId: ,
+  //   topicId: 
+  // };
+
+  con.query('INSERT INTO admins SET ?', admins, (err, results, fields) => {
+    if(err) {
+      throw err;
+    }
+    console.log('Added admins into the database')
   })
 });
 
