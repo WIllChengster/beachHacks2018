@@ -30,6 +30,7 @@ class TopicCreator extends Component{
             endDate:'',
             progress:''
         }
+        console.log('hello')
         axios.post("/hackathons/new", submittedContent).then( res => {
             console.log(res)
         } )
@@ -65,4 +66,4 @@ function mapStateToProps(state){
     auth: state.user.auth
 }
 
-export default connect(mapStateToProps,{})(TopicCreator)
+export default (TopicCreator)

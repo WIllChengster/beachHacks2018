@@ -12,8 +12,14 @@ class Home extends Component {
         }
     }
 
+    componentWillMount(){
+        this.getHackathons()
+    }
+
     getHackathons(){
-        axios.get('/hackathons')
+        axios.get('/hackathons').then(res => {
+            console.log( 'hackathon data'  ,res)
+        })
     }
 
     render(){
