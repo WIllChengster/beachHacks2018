@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 
 class Register extends Component{
     constructor(props){
@@ -21,13 +22,25 @@ class Register extends Component{
         })
     }
 
+    onSubmit(event){
+        const submittedContent = {
+            title: this.state.title,
+            description: this.state.description,
+            eventId: this.props.match.params.eventId
+        }
+        axios.post('/hackathons/register', submittedContent).then(res=>{
+            console.log(res.body);
+        })
+        event.preventDefault()
+    }
+
     render(){
-        console.log(this.state)
+        console.log(this.props)
         return(
             <div className="row">
                 <h1 className="text-center w-100">Register your Project</h1>
                 <div className="col-5 jumbotron ">
-                    <form>
+                    <form onSubmit={this.onSubmit.bind(this)} >
                         <div className="form-group">
                             <label htmlFor="projectName">Title</label>
                             <input onChange={this.onTitleChange.bind(this)} value={this.state.title} id="projectName" type="text" className="form-control" placeholder="Enter your project title" />

@@ -8,7 +8,7 @@ const express    = require('express'),
 const { resolve } = require('path');
 const PORT = process.env.PORT || 8080;
 
-
+app.use(bodyParser.json())
 app.use(require('express-session')({
   secret: 'keyboard cat',
   resave: true,

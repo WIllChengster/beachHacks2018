@@ -11,13 +11,11 @@ class TopicCreator extends Component{
         }
     }
     onTitleChange(event){
-        console.log(event.target.value)
         this.setState({
             titleInput: event.target.value
         })
     }
     onDescChange(event) {
-        console.log(event.target.value)
         this.setState({
             descInput: event.target.value
         })
@@ -32,7 +30,7 @@ class TopicCreator extends Component{
         }
         console.log('hello')
         console.log(submittedContent)
-        axios.post("/hackathons/new", submittedContent).then( res => {
+        axios.post("/hackathons/register", submittedContent).then( res => {
             console.log(res)
         } )
         event.preventDefault()

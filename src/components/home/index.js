@@ -6,9 +6,7 @@ class Home extends Component {
     constructor(props){
         super(props)
         this.state={
-            hackathons: {
-
-            }
+            hackathons: []
         }
     }
 
@@ -19,6 +17,9 @@ class Home extends Component {
     getHackathons(){
         axios.get('/hackathons').then(res => {
             console.log( 'hackathon data'  ,res)
+            this.setState({
+                hackathons: res.data
+            })
         })
     }
 
@@ -26,8 +27,7 @@ class Home extends Component {
 
 
 
-        const hackathonArr = {1:1, 2:2, 3:3, 4:4, 5:5}
-        const hackathonBox = Object.keys(hackathonArr).map((item,index) => {
+        const hackathonBox = this.state.hackathons.map( (item,index) => {
             console.log(item)
 
             return(

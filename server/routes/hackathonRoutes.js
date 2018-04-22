@@ -32,8 +32,9 @@ router.get('/hackathons/:topicId', (req, res) => {
   });
 });
 
-router.post('hackathons/register', (req,res)=>{
+router.post('/hackathons/register', (req,res)=>{
   // expecting to receive event ID, project title, and project descript
+  console.log(req)
 })
 
 router.get('/hackathons/:topicId/find-teammates', (req, res) => {
