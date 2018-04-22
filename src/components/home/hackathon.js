@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-export default () => {
+export default (props) => {
     const hackathon={
         height: '120px',
         width: '250px',
@@ -9,7 +9,7 @@ export default () => {
         display: "inline-block",
         margin: '5px'
     }
-    console.log(this.props)
+
     return(
         <Link to={`/event/${props.eventId}`} >
             <div style={hackathon} className="align-self-center justify-content-center " >

@@ -21,11 +21,13 @@ class Home extends Component {
 
 
         const hackathonArr = {1:1, 2:2, 3:3, 4:4, 5:5}
-        // const hackathonBox = Object.keys(hackathonArr).map((item,index) => {
-        //     return(
-        //         <Hackathon key={index} hackathonData={item} />
-        //     )
-        // })
+        const hackathonBox = Object.keys(hackathonArr).map((item,index) => {
+            console.log(item)
+
+            return(
+                <Hackathon key={index} eventId={item} />
+            )
+        })
 
         return(
             
@@ -37,7 +39,7 @@ class Home extends Component {
                 </div>
                     <h4 className="my-5" >Explore Hackathons</h4>
                     <div className="d-flex " >
-                        {/* {hackathonBox} */}
+                        {hackathonBox}
                     </div>
             </div>
         )
