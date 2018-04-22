@@ -12,7 +12,7 @@ const App = () => (
     <div>
         <NavBar/>
         <div className="container">
-            <Route exact path="/" component={Home} />
+            <Route exact path="/home" component={Home} />
             <Route path="/matching" component={Matching} />
             <Route path="/topicCreator" component={TopicCreator} />
             <Route exact path="/event/:eventId" component={EventPage}/>
