@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "proxy":{
-    "/auth":{
-      "target":"http://localhost:8080"
+  "proxy": {
+    "/auth": {
+      "target": "http://localhost:8080"
     }
   },
   "scripts": {
