@@ -1,7 +1,6 @@
 import React from 'react';
 import {Route} from 'react-router-dom';
-import '../assets/css/app.css';
-
+import "bootstrap/dist/css/bootstrap.min.css"
 import NavBar from './navigation/navBar';
 import Matching from './matching';
 

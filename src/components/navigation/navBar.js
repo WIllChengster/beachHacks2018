@@ -1,11 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
-import '../../assets/css/navigation.css';
 
 export default () => {
     return(
-        <div className="nav">
-            <p>This is the navbar</p>
+        <div className="navbar navbar-dark bg-dark" >
+            <Link to="/" >This is the navbar</Link>
             <Link to="/matching" > Matching </Link>
         </div>
     )
