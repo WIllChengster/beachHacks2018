@@ -13,7 +13,7 @@ export default (props) => {
     return(
 
         <Link to={`/event/${props.data.topicId}`} >
-            <div style={hackathon} className="d-flex self-content-center justify-content-center " >
+            <div style={hackathon} className="d-flex justify-content-center bg-dark " >
                 <h6 className=" text-center align-self-center" > {props.data.title}  </h6>
             </div>
         </Link>

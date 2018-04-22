@@ -10,7 +10,7 @@ import Home from './home/';
 import {authCheck} from '../actions'
 import {connect} from 'react-redux'
 import { withRouter } from 'react-router-dom'
-
+import '../assets/css/app.css'
 
 class App extends Component {
     constructor(props){

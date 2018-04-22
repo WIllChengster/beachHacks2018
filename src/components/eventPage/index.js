@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios'
+import hero from '../../assets/images/sitetop-cover.jpg'
+import {connect} from 'react-redux'
 
 class EventPage extends Component{
     constructor(props){
@@ -8,9 +10,23 @@ class EventPage extends Component{
         this.state={
             numAttendees:99,
             hackData:{
-                title:''
+                title:'',
+                userData:{}
             }
         }
+    }
+
+    componentWillMount(){
+        this.getProfileData()
+    }
+
+    getProfileData(){
+        axios.get('/auth/data').then(res=>{
+            console.log(res)
+            this.setState({
+                userData: res
+            })
+        })
     }
 
     componentWillMount(){
@@ -30,7 +46,8 @@ class EventPage extends Component{
         const dummyImg={
             height:'300px',
             width: '100vw',
-            backgroundColor: 'lightGray'
+            backgroundColor: 'lightGray',
+            overflow:'hidden'
         }
         const desc = {
             height: '500px',
@@ -61,10 +78,15 @@ class EventPage extends Component{
                 <div key={index} style={attendee}></div>
             )
         } )
+        const imgStyle={
+            height:'100%'
+        }
         console.log(this.state)
         return(
-            <div className="row w-100 mb-5">
-                <div style={dummyImg} className="text-center mt-5" > dummy img </div>
+            <div className="row w-100 mb-5 jumbotron mt-3">
+                <div style={dummyImg} className="text-center mt-5" >
+                    <img src={hero} className="img-fluid" />
+                </div>
                 <div className="row w-100">
                     <h1 className="text-center w-100 my-3 " >{this.state.hackData.title}</h1>
                 </div>
@@ -98,4 +120,8 @@ class EventPage extends Component{
     }
 }
 
-export default EventPage
+function mapStateWithProps(state){
+    auth: state.user.auth
+}
+
+export default  connect(mapStateWithProps)(EventPage);

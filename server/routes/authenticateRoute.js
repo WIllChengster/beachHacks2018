@@ -90,5 +90,9 @@ router.get('/auth/logoff', (req, res) => {
     } )
 });
 
+router.get('/auth/data',(req,res)=>{
+	res.send(req.user)
+})
+
 module.exports = router;
 
