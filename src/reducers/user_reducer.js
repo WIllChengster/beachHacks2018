@@ -6,14 +6,10 @@ const DEFAULT_STATE = {
 
 
 export default (state = DEFAULT_STATE, action) => {
-    console.log(action)
-
-    switch(action){
-        
+    switch(action.type){
         case types.AUTH_CHECK:
-            return {...state, auth: payload.data.authenticated};
+            return {...state, auth: action.payload.data.authenticated};
         default: 
             return {...state}
-            
     }
 }
