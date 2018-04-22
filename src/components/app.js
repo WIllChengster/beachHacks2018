@@ -5,6 +5,8 @@ import NavBar from './navigation/navBar';
 import Matching from './matching/';
 import TopicCreator from './topicCreator/'
 import EventPage from './eventPage/'
+import Register from './register/'
+
 
 const App = () => (
     <div>
@@ -12,7 +14,8 @@ const App = () => (
         <div className="container">
             <Route path="/matching" component={Matching} />
             <Route path="/topicCreator" component={TopicCreator} />
-            <Route path="/event" component={EventPage}/>
+            <Route exact path="/event:eventId" component={EventPage}/>
+            <Route pgitath="/event/register" component={Register} />
         </div>
     </div>
 );

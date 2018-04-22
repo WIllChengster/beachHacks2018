@@ -57,9 +57,9 @@ class EventPage extends Component{
                         
                         <div>
                             <Link to="/event/signUp" >
-                            <p className="text-center" >
-                                <button className="btn btn-info w-100 ">Register</button>
-                            </p>
+                                <p className="text-center" >
+                                    <button className="btn btn-info w-100 ">Register</button>
+                                </p>
                             </Link>
                             <h3 className="text-center" >Attendees</h3>
                             {attendeeSquare}
