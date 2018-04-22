@@ -1,12 +1,14 @@
 import React from 'react';
+import NavBar from './navigation/navBar'
+import {Route} from 'react-router-dom'
+import '../assets/css/app.css'
 
 const App = () => (
     <div>
-        <div className="app">
-            <img className="logo rotate"/>
-            <h1>BeachHacks2018</h1>
-        </div>
+        <NavBar/>
     </div>
 );
+
+
 
 export default App;
