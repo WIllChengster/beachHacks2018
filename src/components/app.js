@@ -15,7 +15,7 @@ const App = () => (
             <Route exact path="/" component={Home} />
             <Route path="/matching" component={Matching} />
             <Route path="/topicCreator" component={TopicCreator} />
-            <Route path="/event/:eventId" component={EventPage}/>
+            <Route exact path="/event/:eventId" component={EventPage}/>
             <Route path="/event/:eventId/register" component={Register} />
         </div>
     </div>
