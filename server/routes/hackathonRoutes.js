@@ -19,7 +19,12 @@ router.get('/hackathons', (req, res) => {
 });
 
 router.get('/hackathons/new', (req, res) => {
-  res.send()
+  if(!req.isAuthenticated()) {
+    console.log('User is not authenticated, redirecting to login page');
+    res.redirect('/auth/github');
+  } else {
+    res.send('Create a new Hackathon here');
+  }
 });
 
 router.get('/hackathons/:topicId', (req, res) => {

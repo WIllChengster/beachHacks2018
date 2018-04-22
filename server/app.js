@@ -1,35 +1,32 @@
 //server code here
-const express        = require('express'),
-      app            = express(),
-      mysql          = require('mysql'),
-      bodyParser     = require('body-parser'),
-      config         = require('./config.json');
+const express    = require('express'),
+      app        = express(),
+      mysql      = require('mysql'),
+      bodyParser = require('body-parser'),
+      passport   = require('passport'),
+      config     = require('./config.json');
+
+app.use(require('express-session')({
+  secret: 'keyboard cat',
+  resave: true,
+  savedUnitialized: true
+}));
 
 const authenticateRoute = require('./routes/authenticateRoute'),
       hackathonRoutes   = require('./routes/hackathonRoutes'),
       profileRoute      = require('./routes/profileRoute');
 
 app.use(bodyParser.urlencoded({extended: true}));
+
+// GitHub Auth
+app.use(express.static('public'));
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Routes
 app.use(hackathonRoutes);
-app.use(authenticateRoute);
 app.use(profileRoute);
-
-const con = mysql.createConnection({
-	host: config.host,
-	user: config.user,
-	password: config.password,
-  database: config.database
-});
-
-con.connect((err) => {
-  if(err) {
-    console.log(err);
-    return
-  }
-  else {
-    console.log('Connected to MySQL!');
-  }
-});
+app.use(authenticateRoute);
 
 app.get('/', (req, res) => {
 	res.send('Landing Page');
