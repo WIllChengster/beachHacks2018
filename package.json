@@ -7,7 +7,7 @@
     "/auth": {
       "target": "http://localhost:8080"
     },
-    "hackathons":{
+    "/hackathons":{
       "target":"http://localhost:8080"
     }
   },
