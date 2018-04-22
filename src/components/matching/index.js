@@ -18,13 +18,35 @@ import DevCard from './devCard'
 
             )
         } )
+        
 
         return (
             <div>
-                <h1>This is the matching page</h1>
+                <h1 className="text-center mt-3" >Match With Developers</h1>
                 <div className="row">
                     <div className="col-3 align-self-center jumbotron">
                         <p className="text-center" >Developers Selected</p>
+                        <div className="card">
+                            <div className="card-body">
+                                <p><small>John Smith </small></p>
+                            </div>
+                        </div>
+                        <div className="card">
+                            <div className="card-body">
+                                <p><small>John Smith </small></p>
+                            </div>
+                        </div>
+                        <div className="card">
+                            <div className="card-body">
+                                <p><small>John Smith </small></p>
+                            </div>
+                        </div>
+                        <div className="card">
+                            <div className="card-body">
+                                <p><small>John Smith </small></p>
+                            </div>
+                        </div>
+                        
                     </div>
                     <div className="col">
                         {devCards}
