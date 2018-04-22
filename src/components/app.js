@@ -1,12 +1,18 @@
-
+import React from 'react';
+import {Route} from 'react-router-dom';
+import "bootstrap/dist/css/bootstrap.min.css"
+import NavBar from './navigation/navBar';
+import Matching from './matching/';
 
 const App = () => (
     <div>
-        <div className="app">
-            <img src={logo} className="logo rotate"/>
-            <h1>BeachHacks2018</h1>
+        <NavBar/>
+        <div className="container">
+            <Route path="/matching" component={Matching} />
         </div>
     </div>
 );
+
+
 
 export default App;
