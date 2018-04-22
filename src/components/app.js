@@ -7,7 +7,9 @@ import Matching from './matching';
 const App = () => (
     <div>
         <NavBar/>
-        <Route path="/matching" component={Matching} />
+        <div className="container">
+            <Route path="/matching" component={Matching} />
+        </div>
     </div>
 );
 
