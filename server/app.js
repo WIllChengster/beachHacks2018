@@ -5,6 +5,9 @@ const express    = require('express'),
       bodyParser = require('body-parser'),
       passport   = require('passport'),
       config     = require('./config.json');
+const { resolve } = require('path');
+const PORT = process.env.PORT || 8080;
+
 
 app.use(require('express-session')({
   secret: 'keyboard cat',
@@ -15,6 +18,13 @@ app.use(require('express-session')({
 const authenticateRoute = require('./routes/authenticateRoute'),
       hackathonRoutes   = require('./routes/hackathonRoutes'),
       profileRoute      = require('./routes/profileRoute');
+
+app.use(function(req, res, next) {
+      res.header("Access-Control-Allow-Origin", "*");
+      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+      next();
+      });
+        
 
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -32,4 +42,9 @@ app.get('/', (req, res) => {
 	res.send('Landing Page');
 });
 
-app.listen(8080, () => console.log('Server started on port 8080...'));
+app.use(express.static(resolve(__dirname, '..', 'dist')));
+app.get('*', (req, res) => {
+    res.sendFile(resolve(__dirname, '..', 'dist', 'index.html'));
+});
+
+app.listen(PORT, () => console.log('Server started on port'+PORT));
