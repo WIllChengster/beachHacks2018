@@ -19,7 +19,7 @@ passport.use(new GitHubStrategy({
 	function (accessToken, refreshToken, profile, done) {
 		con.query('SELECT * FROM users WHERE userId = ?', [profile.id], (err, results) => {
 			// If user does not exist in database, create a new user
-			if(results.length === 0) {
+			if(!results) {
 				// console.log(profile);
 				let user = {
 					userId: profile.id,
@@ -58,25 +58,27 @@ passport.deserializeUser((id, done) => {
 	})
 });
 
-router.get('/error', (err, res) => {
+router.get('/auth/error', (err, res) => {
 	res.send(err);
 });
 
-router.get('/check', (req, res) => {
+router.get('/auth/check', (req, res) => {
+	
 	let authenticated = null;
 	if(req.isAuthenticated()) {
 		authenticated = true;
 	} else {
 		authenticated = false;
 	}
+	console.log(authenticated)
 
 	res.send({authenticated});
 });
 
-router.get('/login', passport.authenticate('github'));
+router.get('/auth/login', passport.authenticate('github'));
 
 router.get('/auth/github/callback', passport.authenticate('github'), (err, res) => {
-  res.redirect('/');
+  res.redirect('/home');
 });
 
 router.get('/logout', (req, res) => {
