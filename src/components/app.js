@@ -6,6 +6,7 @@ import '../assets/css/app.css'
 const App = () => (
     <div>
         <NavBar/>
+
     </div>
 );
 
