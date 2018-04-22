@@ -6,7 +6,7 @@ import Matching from './matching/';
 import TopicCreator from './topicCreator/'
 import EventPage from './eventPage/'
 import Register from './register/'
-import Home from './home'
+import Home from './home/'
 
 const App = () => (
     <div>
