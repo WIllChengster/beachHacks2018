@@ -50,7 +50,11 @@ class EventPage extends Component{
 
         }
     }
-
+    onJoinClick(){
+        axios.post(`/hackathons/${this.props.match.params.eventId}/join`, this.state.hackData).then(res=>{
+            console.log(res)
+        })
+    }
     render(){
         const dummyImg={
             height:'300px',
