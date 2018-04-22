@@ -7,13 +7,19 @@ import TopicCreator from './topicCreator/';
 import EventPage from './eventPage/';
 import Register from './register/';
 import Home from './home/';
+import {authCheck} from '../actions'
+import {connect} from 'react-redux'
 
 class App extends Component {
     constructor(props){
         super(props)
     }
-    
+    componentWillMount(){
+        this.props.authCheck()
+    }
+
     render(){
+        console.log(this.props)
         return(
         <div>
             <NavBar/>
@@ -30,6 +36,11 @@ class App extends Component {
 }
 
 
+function mapStateToProps(state){
+    return {
+        auth: state.user.auth
+    }
+}
 
 
-export default (App);
+export default connect(mapStateToProps, {authCheck:authCheck})(App);

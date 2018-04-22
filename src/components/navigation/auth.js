@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
-import {authCheck} from '../../actions/index'
 
 class Auth extends Component{
     constructor(props){
@@ -14,21 +13,24 @@ class Auth extends Component{
     }
 
     render(){
-        console.log(this.props)
+        let authButton;
+        if(this.props.auth){
+            authButton = <button onClick={this.logOff()} className="btn">Log Off</button>
+        } else {
+            authButton = <a href="/auth/login"> <button className="btn">Sign in</button> </a>
+        }
         return(
             <div>
-                <button onClick={this.logOff} >logOff</button>>
-                <button onClick={this.props.authCheck} className="btn">authCheck</button>
-                <a href="/auth/login"> <button className="btn">Sign in</button> </a>
+                {authButton}
             </div>
         )
     }
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
     return {
-        state: state.user.auth
+        auth: state.user.auth
     }
 }
 
-export default connect(mapStateToProps, {authCheck: authCheck})(Auth);
+export default connect(mapStateToProps,{})(Auth);
