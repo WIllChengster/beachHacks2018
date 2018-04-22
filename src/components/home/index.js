@@ -44,7 +44,7 @@ class Home extends Component {
                     {/* <input type="text" className="form-control my-5" placeholder="search for a hackathon"/> */}
                 </div>
                     <h4 className="my-5" >Explore Hackathons</h4>
-                    <div className="d-flex row" >
+                    <div className="d-flex row justify-content-center" >
                         {hackathonBox}
                     </div>
             </div>
