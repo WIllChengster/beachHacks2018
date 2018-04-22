@@ -1,24 +1,34 @@
 import React, {Component} from 'react';
-import axios from 'axios'
-
+import axios from 'axios';
+import {connect} from 'react-redux';
+import {authCheck} from '../../actions/index'
 
 class Auth extends Component{
-
-    signIn(){
-        axios.get('/auth/login')
+    constructor(props){
+        super(props)
     }
-    authCheck(){
-        axios.get('/auth/check').then(res=>{
+    logOff(){
+        axios.get('/auth/logoff').then(res=>{
             console.log(res)
         })
     }
+
     render(){
+        console.log(this.props)
         return(
             <div>
-                <button onClick={this.authCheck} className="btn">authCheck</button>
-                <button onClick={this.signIn} className="btn">Sign in</button>
+                <button onClick={this.logOff} >logOff</button>>
+                <button onClick={this.props.authCheck} className="btn">authCheck</button>
+                <a href="/auth/login"> <button className="btn">Sign in</button> </a>
             </div>
         )
     }
 }
-export default Auth
+
+function mapStateToProps(state){
+    return {
+        state: state.user.auth
+    }
+}
+
+export default connect(mapStateToProps, {authCheck: authCheck})(Auth);
