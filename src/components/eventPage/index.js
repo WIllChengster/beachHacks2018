@@ -24,9 +24,6 @@ class EventPage extends Component{
             this.setState({
                 userData: res
             })
-            axios.post(`hackathons/${this.props.match.params}/apply`, user).then(res=>{
-                console.log(res)
-            })
         })
     }
 
@@ -114,7 +111,7 @@ class EventPage extends Component{
                             </Link>
                             <h3 className="text-center" >Attendees</h3>
                             {attendeeSquare}
-                            <button className="btn btn-primary">Join now!</button>
+                            <button onClick={this.onJoinClick.bind(this)} className="btn btn-primary">Join now!</button>
                         </div>
                     </div>
                     <div className="col">
