@@ -9,6 +9,8 @@ import Register from './register/';
 import Home from './home/';
 import {authCheck} from '../actions'
 import {connect} from 'react-redux'
+import { withRouter } from 'react-router-dom'
+
 
 class App extends Component {
     constructor(props){
@@ -44,4 +46,4 @@ function mapStateToProps(state){
 }
 
 
-export default connect(mapStateToProps, {authCheck:authCheck})(App);
+export default withRouter(connect(mapStateToProps, {authCheck:authCheck})(App));

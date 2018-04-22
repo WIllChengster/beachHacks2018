@@ -18,7 +18,7 @@ router.get('/hackathons', (req, res) => {
   });
 });
 
-router.get('/hackathons/new', isAuthenticated, (req, res) => {
+router.post('/hackathons/new', isAuthenticated, (req, res) => {
     res.send('Create a new Hackathon here');
 });
 
