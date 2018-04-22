@@ -18,8 +18,9 @@ router.get('/hackathons', (req, res) => {
   });
 });
 
-router.post('/hackathons/new', isAuthenticated, (req, res) => {
-    res.send('Create a new Hackathon here');
+router.post('/hackathons/new', (req, res) => {
+  console.log(req.body);
+  res.send('Create a new Hackathon here');
 });
 
 router.get('/hackathons/:topicId', (req, res) => {
@@ -54,25 +55,25 @@ router.post('/hackathons', (req, res) => {
   //   coverArtUrl = req.body.coverArtUrl
   // };
 
-  con.query('INSERT INTO topics SET ?', hackathon, (err, results, fields) => {
-    if(err) {
-      throw err;
-    }
-    console.log('Created new Hackathon post.');
-  });
+//   con.query('INSERT INTO topics SET ?', hackathon, (err, results, fields) => {
+//     if(err) {
+//       throw err;
+//     }
+//     console.log('Created new Hackathon post.');
+//   });
 
-  // let admins = {
-  //   userId: ,
-  //   topicId: 
-  // };
+//   // let admins = {
+//   //   userId: ,
+//   //   topicId: 
+//   // };
 
-  con.query('INSERT INTO admins SET ?', admins, (err, results, fields) => {
-    if(err) {
-      throw err;
-    }
-    console.log('Added admins into the database');
-  });
-});
+//   con.query('INSERT INTO admins SET ?', admins, (err, results, fields) => {
+//     if(err) {
+//       throw err;
+//     }
+//     console.log('Added admins into the database');
+//   });
+ });
 
 function isAuthenticated(req, res, next) {
   if(req.isAuthenticated()) {
