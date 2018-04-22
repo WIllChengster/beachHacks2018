@@ -1,6 +1,6 @@
 const router = require('express').Router(),
       mysql  = require('mysql'),
-      config = require('../config.json');
+      config = require('../config.json')
 
 const con = mysql.createConnection({
   host: config.host,
@@ -19,8 +19,18 @@ router.get('/hackathons', (req, res) => {
 });
 
 router.post('/hackathons/new', (req, res) => {
-  console.log(req.body);
-  res.send('Create a new Hackathon here');
+  let hackathon = {
+    description: req.body.description,
+    progress: 'In-Progress',
+    coverArtUrl: 'https://google.com',
+  }
+
+  con.query('INSERT INTO topics SET ?', hackathon, (err, res, fields) => {
+    if(err) {
+      throw err;
+    }
+    console.log('Created a new Hackathon!');
+  });
 });
 
 router.get('/hackathons/:topicId', (req, res) => {
