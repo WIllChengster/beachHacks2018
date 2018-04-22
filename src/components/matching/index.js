@@ -14,7 +14,14 @@ export default () => {
     return (
         <div>
             <h1>This is the matching page</h1>
-            {devCards}
+            <div className="row">
+                <div className="col-3 align-self-center ">
+                    <p>SIDEBAR CONTENT</p>
+                </div>
+                <div className="col">
+                    {devCards}
+                </div>
+            </div>
         </div>
     )
 }
