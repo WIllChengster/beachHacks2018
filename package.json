@@ -3,18 +3,26 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "proxy":{
+    "/auth":{
+      "target":"localhost:8080"
+    }
+  },
   "scripts": {
-    "start": "node dev_server.js",
+    "start": "npm-run-all --parallel dev:*",
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "node dev_server.js",
     "bundle": "webpack --config webpack.prod.js --progress",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "William, Taki, Randy, Rafael, ",
+  "author": "William, Taka, Randy, Rafael, ",
   "license": "ISC",
   "repository": {
     "type": "git",
     "url": "https://github.com/burninggun/beachHacks2018.git"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "body-parser": "^1.18.2",
     "bootstrap": "^4.1.0",
@@ -23,6 +31,7 @@
     "express-session": "^1.15.6",
     "mysql": "^2.15.0",
     "nodemon": "^1.17.3",
+    "npm-run-all": "^4.1.2",
     "passport": "^0.4.0",
     "passport-github": "^1.1.0",
     "react": "^16.2.0",
