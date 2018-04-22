@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 export default () => {
     const hackathon={
@@ -8,9 +9,12 @@ export default () => {
         display: "inline-block",
         margin: '5px'
     }
+    console.log(this.props)
     return(
-        <div style={hackathon} className="align-self-center justify-content-center " >
-            <h6 className=" text-center" > Hackathon Title! </h6>
-        </div>
+        <Link to={`/event/${props.eventId}`} >
+            <div style={hackathon} className="align-self-center justify-content-center " >
+                <h6 className=" text-center" > Hackathon Title! </h6>
+            </div>
+        </Link>
     )
 }
